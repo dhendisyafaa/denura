@@ -1,24 +1,30 @@
-<?php
-include "../controllers/userController.php";
-$result = registerUser("John Doe", "8888", "dhendi@gmail.com", "password123");
-if ($result) {
-  echo "User registered successfully.";
-  echo $result;
-} else {
-  echo "Failed to register user.";
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Register</title>
 </head>
 
 <body>
+  <h2>Form Register</h2>
+  <form action="../modules/user/userController.php" method="POST">
+    <input type="hidden" name="action" value="insert">
 
+    <label for="namaLengkap">Nama Lengkap:</label>
+    <input type="text" name="namaLengkap" required><br>
+
+    <label for="noTelp">No. Telp:</label>
+    <input type="text" name="noTelp" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+
+    <button type="submit">Register</button>
+  </form>
 </body>
 
 </html>
