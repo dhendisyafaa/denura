@@ -1,5 +1,5 @@
 <?php
-include '../../controllers/penyewaanController.php';
+include '../../modules/penyewaan/penyewaanController.php';
 $penyewaanList = getAllPenyewaan();
 ?>
 
@@ -10,7 +10,8 @@ $penyewaanList = getAllPenyewaan();
 <div class="p-4 sm:ml-64">
     <h1 class="text-2xl text-bold my-3">Daftar Penyewaan Peralatan</h1>
     <a href="tambahPenyewaan.php">
-        <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+        <button type="button"
+            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
             Tambah Penyewaan
         </button>
     </a>
@@ -76,13 +77,16 @@ $penyewaanList = getAllPenyewaan();
                             </td>
                             <td class="px-6 py-4">
                                 <div class="inline-flex rounded-md shadow-xs" role="group">
-                                    <a href="editPenyewaan.php?id=<?= $penyewaan['idSewa'] ?>" type="button" class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
+                                    <a href="editPenyewaan.php?id=<?= $penyewaan['idSewa'] ?>" type="button"
+                                        class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
                                         Edit
                                     </a>
-                                    <form method="POST" action="../../controllers/penyewaanController.php" onsubmit="return confirm('Yakin ingin menghapus penyewaan ini?');">
+                                    <form method="POST" action="../../modules/penyewaan/penyewaanController.php"
+                                        onsubmit="return confirm('Yakin ingin menghapus penyewaan ini?');">
                                         <input type="hidden" name="idSewa" value="<?= $penyewaan['idSewa'] ?>">
                                         <input type="hidden" name="hapusPenyewaan" value="1">
-                                        <button type="submit" class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
+                                        <button type="submit"
+                                            class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
                                     </form>
                                 </div>
                             </td>

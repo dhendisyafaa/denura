@@ -1,5 +1,5 @@
 <?php
-include "../../config/conn.php";
+include __DIR__ . '/../../config/conn.php';
 include_once __DIR__ . '/userService.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'insert') {
