@@ -13,8 +13,8 @@ if (!$barang) {
     exit;
 }
 
-include '../heading.php';
-include '../sidebar.php';
+include '../layouts/heading.php';
+include '../layouts/sidebar.php';
 
 ?>
 
@@ -56,4 +56,4 @@ include '../sidebar.php';
     </form>
 </div>
 
-<?php include '../footer.php' ?>
+<?php include '../layouts/footer.php' ?>

@@ -38,7 +38,6 @@ function getBarangByIdRepo($id)
   return $barang ?: null;
 }
 
-
 function insertBarangRepo($nama_barang, $harga, $stok)
 {
   global $conn;

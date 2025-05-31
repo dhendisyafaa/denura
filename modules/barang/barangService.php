@@ -14,7 +14,6 @@ function getBarangByIdService($id)
   return getBarangByIdRepo($id);
 }
 
-
 function createBarangService($nama_barang, $harga, $stok)
 {
   if (empty($nama_barang) || $harga <= 0 || $stok < 0) {
