@@ -32,3 +32,50 @@ function getPenyewaanByIdRepo($id)
   mysqli_stmt_close($stmt);
   return $penyewaan;
 }
+
+function insertPenyewaanRepo($id_jasa, $id_barang, $tgl_sewa, $tgl_pengembalian, $harga_sewa)
+{
+  global $conn;
+  $query = "INSERT INTO penyewaan (idJasa, idBarang, tglSewa, tglPengembalian, hargaSewa) VALUES (?, ?, ?, ?, ?)";
+  $stmt = mysqli_prepare($conn, $query);
+
+  if (!$stmt) {
+    die("Prepare failed: " . mysqli_error($conn));
+  }
+
+  mysqli_stmt_bind_param($stmt, "iissi", $id_jasa, $id_barang, $tgl_sewa, $tgl_pengembalian, $harga_sewa);
+  $success = mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+  return $success;
+}
+
+function updateSewaRepo($id_sewa, $id_jasa, $id_barang, $tgl_sewa, $tgl_pengembalian, $harga_sewa)
+{
+  global $conn;
+  $query = "UPDATE penyewaan SET idJasa = ?, idBarang = ?, tglSewa = ?, tglPengembalian = ?, hargaSewa = ? WHERE idSewa = ?";
+  $stmt = mysqli_prepare($conn, $query);
+  if (!$stmt)
+    return false;
+
+  mysqli_stmt_bind_param($stmt, "iissii", $id_jasa, $id_barang, $tgl_sewa, $tgl_pengembalian, $harga_sewa, $id_sewa);
+  $success = mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+  return $success;
+}
+
+function deleteSewaRepo($id_sewa)
+{
+  global $conn;
+  $query = "DELETE FROM penyewaan WHERE idSewa = ?";
+  $stmt = mysqli_prepare($conn, $query);
+  if (!$stmt)
+    return false;
+
+  mysqli_stmt_bind_param($stmt, "i", $id_sewa);
+  $success = mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+  return $success;
+}

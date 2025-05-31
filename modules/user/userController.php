@@ -2,6 +2,11 @@
 include __DIR__ . '/../../config/conn.php';
 include_once __DIR__ . '/userService.php';
 
+function getAllUser()
+{
+    return getAllUserService();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'insert') {
   // Simple sanitasi
   $data = [

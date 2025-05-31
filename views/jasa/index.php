@@ -1,11 +1,11 @@
 <?php
-include '../../modules/penyewaan/penyewaanController.php';
+include '../../modules/jasa/jasaController.php';
 $jasaList = getAllJasa();
 ?>
 
 
-<?php include '../heading.php' ?>
-<?php include '../sidebar.php'; ?>
+<?php include '../layouts/heading.php' ?>
+<?php include '../layouts/sidebar.php'; ?>
 
 <div class="p-4 sm:ml-64">
     <h1 class="text-2xl text-bold my-3">Daftar Jasa</h1>
@@ -55,7 +55,7 @@ $jasaList = getAllJasa();
                                 <?= htmlspecialchars($jasa['idUser']) ?>
                             </th>
                             <td class="px-6 py-4">
-                                <?= htmlspecialchars($jasa['Jenis Jasa']) ?>
+                                <?= htmlspecialchars($jasa['jenisJasa']) ?>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="inline-flex rounded-md shadow-xs" role="group">
@@ -63,7 +63,7 @@ $jasaList = getAllJasa();
                                         class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
                                         Edit
                                     </a>
-                                    <form method="POST" action="../../modules/penyewaan/penyewaanController.php"
+                                    <form method="POST" action="../../modules/jasa/jasaController.php"
                                         onsubmit="return confirm('Yakin ingin menghapus jasa ini?');">
                                         <input type="hidden" name="idJasa" value="<?= $jasa['idJasa'] ?>">
                                         <input type="hidden" name="hapusJasa" value="1">
@@ -80,4 +80,4 @@ $jasaList = getAllJasa();
     </div>
 </div>
 
-<?php include '../footer.php' ?>
+<?php include '../layouts/footer.php' ?>

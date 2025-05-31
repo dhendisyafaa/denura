@@ -13,3 +13,7 @@ function registerUserService($data)
   return registerUserRepo($data);
 }
 
+function getAllUserService()
+{
+  return getAllUserRepo();
+}

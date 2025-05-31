@@ -4,8 +4,8 @@ $penyewaanList = getAllPenyewaan();
 ?>
 
 
-<?php include '../heading.php' ?>
-<?php include '../sidebar.php'; ?>
+<?php include '../layouts/heading.php' ?>
+<?php include '../layouts/sidebar.php'; ?>
 
 <div class="p-4 sm:ml-64">
     <h1 class="text-2xl text-bold my-3">Daftar Penyewaan Peralatan</h1>
@@ -98,4 +98,4 @@ $penyewaanList = getAllPenyewaan();
     </div>
 </div>
 
-<?php include '../footer.php' ?>
+<?php include '../layouts/footer.php' ?>

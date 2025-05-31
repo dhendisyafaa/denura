@@ -9,7 +9,6 @@ function getAllBarang()
 
 function getBarangById($id)
 {
-
     return getBarangByIdService($id);
 }
 

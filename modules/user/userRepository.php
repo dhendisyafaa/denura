@@ -1,6 +1,25 @@
 <?php
 include "../../config/conn.php";
 
+function getAllUserRepo()
+{
+  global $conn;
+  $query = "SELECT * FROM user";
+  $result = mysqli_query($conn, $query);
+
+  if (!$result) {
+    error_log("Query failed: " . mysqli_error($conn));
+    return [];
+  }
+
+  $user = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $user[] = $row;
+  }
+
+  return $user;
+}
+
 function registerUserRepo($data)
 {
   global $conn;

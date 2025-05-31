@@ -1,5 +1,5 @@
-<?php include '../heading.php' ?>
-<?php include '../sidebar.php'; ?>
+<?php include '../layouts/heading.php' ?>
+<?php include '../layouts/sidebar.php'; ?>
 
 <div class="p-4 sm:ml-64 min-h-screen flex flex-col items-center justify-center">
     <!-- form tambah barang -->
@@ -37,4 +37,4 @@
     </form>
 </div>
 
-<?php include '../footer.php' ?>
+<?php include '../layouts/footer.php' ?>
