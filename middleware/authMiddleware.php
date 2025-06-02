@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['userId'])) {
+if (!isset($_SESSION['idUser'])) {
   header("Location: ../views/login.php");
   exit;
 }

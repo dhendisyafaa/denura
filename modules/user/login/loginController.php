@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $user = loginUserService($email, $password);
 
   if ($user) {
-    $_SESSION['userId'] = $user['idUser'];
+    $_SESSION['idUser'] = $user['idUser'];
     $_SESSION['tipeUser'] = $user['tipeUser'];
     $_SESSION['namaLengkap'] = $user['namaLengkap'];
     header("Location: ../../../../dashboard.php");
