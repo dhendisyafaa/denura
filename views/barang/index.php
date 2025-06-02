@@ -3,7 +3,6 @@ include '../../modules/barang/barangController.php';
 $barangList = getAllBarang();
 ?>
 
-
 <?php include '../layouts/heading.php' ?>
 <?php include '../layouts/sidebar.php'; ?>
 
