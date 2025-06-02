@@ -4,7 +4,7 @@ include_once __DIR__ . '/userService.php';
 
 function getAllUser()
 {
-    return getAllUserService();
+  return getAllUserService();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'insert') {
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     'password' => $_POST['password'],
   ];
 
-  // Validasi manual
+
   if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
     echo "Email tidak valid!";
     exit;
