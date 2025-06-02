@@ -34,7 +34,7 @@ function registerUserRepo($data)
 function isEmailExist($email)
 {
   global $conn;
-  $query = "SELECT id FROM user WHERE email = ?";
+  $query = "SELECT idUser FROM user WHERE email = ?";
   $stmt = mysqli_prepare($conn, $query);
   mysqli_stmt_bind_param($stmt, "s", $email);
   mysqli_stmt_execute($stmt);

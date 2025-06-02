@@ -1,3 +1,4 @@
+<?php include_once __DIR__ . '/../denura/middleware/authMiddleware.php'; ?>
 <?php include 'views/layouts/heading.php' ?>
 <?php include 'views/layouts/sidebar.php'; ?>
 
