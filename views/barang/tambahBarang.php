@@ -1,5 +1,9 @@
-<?php include '../layouts/heading.php' ?>
-<?php include '../layouts/sidebar.php'; ?>
+<?php
+include_once __DIR__ . '/../../middleware/helpers.php';
+requireAdminOnly();
+include '../layouts/heading.php';
+include '../layouts/sidebar.php';
+?>
 
 <div class="p-4 sm:ml-64 min-h-screen flex flex-col items-center justify-center">
     <!-- form tambah barang -->
@@ -18,6 +22,12 @@
             <input type="text" id="namaBarang" name="namaBarang"
                 class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Kamera" required />
+        </div>
+        <div class="mb-5">
+            <label for="urlGambar" class="block mb-2 text-sm font-medium text-gray-900">Gambar Barang</label>
+            <input type="text" id="urlGambar" name="urlGambar"
+                class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                placeholder="" required />
         </div>
         <div class="mb-5">
             <label for="harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
