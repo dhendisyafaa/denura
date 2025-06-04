@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['tipeUser'])) {
+  header('Location: /'); // atau halaman lain yang sesuai
+  exit;
+}
+?>
+
 <?php include '../views/layouts/heading.php' ?>
 
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
