@@ -16,8 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['tambahBarang'])) {
     $nama_barang = $_POST['namaBarang'];
     $stok = intval($_POST['stok']);
     $harga = intval($_POST['hargaBarang']);
+    $urlGambar = $_POST['urlGambar'];
 
-    $result = createBarangService($nama_barang, $harga, $stok);
+    $result = createBarangService($nama_barang, $harga, $stok, $urlGambar);
 
     if ($result) {
         header("Location: ../../views/barang/index.php?status=success");
@@ -34,8 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['editBarang'])) {
     $namaBarang = $_POST['namaBarang'];
     $stok = intval($_POST['stok']);
     $harga = intval($_POST['hargaBarang']);
+    $urlGambar = $_POST['urlGambar'];
 
-    $result = updateBarangService($idBarang, $namaBarang, $stok, $harga);
+    $result = updateBarangService($idBarang, $namaBarang, $stok, $harga, $urlGambar);
 
     header("Location: ../../views/barang/index.php?status=" . ($result ? "updated" : "update_failed"));
     exit;

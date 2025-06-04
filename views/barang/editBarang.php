@@ -1,4 +1,6 @@
 <?php
+include_once __DIR__ . '/../../middleware/helpers.php';
+requireAdminOnly();
 include '../../modules/barang/barangController.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
