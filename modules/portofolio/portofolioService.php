@@ -11,23 +11,22 @@ function getPortofolioByIdService($id)
   return getPortofolioByIdRepo($id);
 }
 
-function addPortofolioService($idUser, $judulKarya, $deskripsi, $tipeKarya, $tglUpload)
+function addPortofolioService($idUser, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya, $tglUpload)
 {
-  // Validasi sederhana
   if (empty($judulKarya) || empty($deskripsi) || empty($tipeKarya)) {
     return false;
   }
 
-  return addPortofolioRepo($idUser, $judulKarya, $deskripsi, $tipeKarya, $tglUpload);
+  return addPortofolioRepo($idUser, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya, $tglUpload);
 }
 
-function updatePortofolioService($idPortofolio, $judulKarya, $deskripsi, $tipeKarya)
+function updatePortofolioService($idPortofolio, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya)
 {
   if (empty($judulKarya) || empty($deskripsi) || empty($tipeKarya)) {
     return false;
   }
 
-  return updatePortofolioRepo($idPortofolio, $judulKarya, $deskripsi, $tipeKarya);
+  return updatePortofolioRepo($idPortofolio, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya);
 }
 
 function deletePortofolioService($idPortofolio)
