@@ -1,35 +1,7 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-</head>
-
-<body>
-  <h2>Form Register</h2>
-  <form action="../modules/user/userController.php" method="POST">
-    <input type="hidden" name="action" value="insert">
-
-    <label for="namaLengkap">Nama Lengkap:</label>
-    <input type="text" name="namaLengkap" required><br>
-
-    <label for="noTelp">No. Telp:</label>
-    <input type="text" name="noTelp" required><br>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" required><br>
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" required><br>
-
-    <button type="submit">Register</button>
-  </form>
-</body>
-
-</html> -->
-
-<?php include '../views/layouts/heading.php' ?>
+<?php
+include '../views/layouts/heading.php';
+session_start();
+$tipeUser = $_SESSION['tipeUser'] ?? null; ?>
 
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm text-center">
@@ -72,14 +44,29 @@
             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
         </div>
       </div>
+      <?php if ($tipeUser === 'Admin'): ?>
+        <div>
+          <label for="email" class="block text-sm/6 font-medium text-gray-900">Tipe user</label>
+          <div class="mt-2">
+            <select id="tipeUser" name="tipeUser" required
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+              <option value="Klien">Klien</option>
+              <option value="Admin">Admin</option>
+              <option value="Fotografer">Fotografer</option>
+              <option value="Videografer">Videografer</option>
+              </option>
+            </select>
+          </div>
+        </div>
+      <?php endif; ?>
       <div>
         <button type="submit"
-          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Masuk</button>
+          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Daftar</button>
       </div>
     </form>
     <p class="mt-10 text-center text-sm/6 text-gray-500">
-      Belum punya akun?
-      <a href="/views/register.php" class="font-semibold text-indigo-600 hover:text-indigo-500">Daftar</a>
+      Sudah punya akun?
+      <a href="/views/login.php" class="font-semibold text-indigo-600 hover:text-indigo-500">Login saja!</a>
     </p>
   </div>
 </div>

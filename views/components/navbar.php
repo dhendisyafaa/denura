@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <header class="absolute inset-x-0 top-0 z-50">
   <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
@@ -22,11 +23,14 @@
       <a href="./views/penyewaan/" class="text-sm/6 font-semibold text-gray-900">Sewa alat</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="/views/login.php" class="text-sm/6 font-semibold text-gray-900">Login<span
-          aria-hidden="true">&rarr;</span></a>
+      <?php if (isset($_SESSION['tipeUser'])): ?>
+        <a href="../../modules/user/logout/logoutController.php" class="text-sm/6 font-semibold text-red-900">Logout</a>
+      <?php else: ?>
+        <a href="/views/login.php" class="text-sm/6 font-semibold text-gray-900">Login<span
+            aria-hidden="true">&rarr;</span></a>
+      <?php endif; ?>
     </div>
   </nav>
-
   <!-- Mobile menu, show/hide based on menu open state. -->
   <div class="lg:hidden hidden" id="mobileNavbar" role="dialog" aria-modal="true">
     <!-- Background backdrop -->
@@ -57,12 +61,20 @@
             <a href="#"
               class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Videografi</a>
             <a href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Sewa Alat</a>
+              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Sewa
+              Alat</a>
           </div>
-          <div class="py-6">
-            <a href="/views/login.php"
-              class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</a>
-          </div>
+          <?php if (isset($_SESSION['tipeUser'])): ?>
+            <div class="py-6">
+              <a href="../../modules/user/logout/logoutController.php"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-red-900 hover:bg-red-50">Logout</a>
+            </div>
+          <?php else: ?>
+            <div class="py-6">
+              <a href="/views/login.php"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</a>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
