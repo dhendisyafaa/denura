@@ -35,20 +35,27 @@ $portofolioList = getAllPortofolio();
         <?php else: ?>
           <?php foreach ($portofolioList as $i => $p): ?>
             <tr class="odd:bg-gray-900 even:bg-gray-800 border-b border-gray-700">
-              <td><?= $i + 1 ?></td>
-              <td><?= htmlspecialchars($p['idPortofolio']) ?></td>
-              <td><?= htmlspecialchars($p['judulKarya']) ?></td>
-              <td><?= htmlspecialchars($p['deskripsi']) ?></td>
-              <td><?= htmlspecialchars($p['tipeKarya']) ?></td>
-              <td><?= htmlspecialchars($p['tglUpload']) ?></td>
-              <td>
-                <a href="editPortofolio.php?id=<?= $p['idPortofolio'] ?>">Edit</a>
-                <form method="POST" action="../../modules/portofolio/portofolioController.php"
-                  onsubmit="return confirm('Yakin ingin menghapus?');">
-                  <input type="hidden" name="idPortofolio" value="<?= $p['idPortofolio'] ?>">
-                  <input type="hidden" name="hapusPortofolio" value="1">
-                  <button type="submit">Delete</button>
-                </form>
+              <td class="px-6 py-4"><?= $i + 1 ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['idPortofolio']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['judulKarya']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['deskripsi']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['tipeKarya']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['tglUpload']) ?></td>
+              <td class="px-6 py-4">
+                <div class="inline-flex rounded-md shadow-xs" role="group">
+                  <a href="editPortofolio.php?id=<?= $p['idPortofolio'] ?>" type="button"
+                    class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
+                    Edit
+                  </a>
+                  <form method="POST" action="../../modules/portofolio/portofolioController.php"
+                    onsubmit="return confirm('Yakin ingin menghapus?');">
+                    <input type="hidden" name="idPortofolio" value="<?= $p['idPortofolio'] ?>">
+                    <input type="hidden" name="hapusPortofolio" value="1">
+                    <button type="submit"
+                      class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
+                  </form>
+                </div>
+
               </td>
             </tr>
           <?php endforeach ?>

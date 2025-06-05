@@ -16,7 +16,7 @@ $userList = getAllUser();
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-400">
-      <thead class="text-xs uppercase bg-gray-700 text-gray-400 text-center">
+      <thead class="text-xs uppercase bg-gray-700 text-gray-400">
         <tr>
           <th cope="col" class="px-6 py-3">ID User</th>
           <th cope="col" class="px-6 py-3">Nama</th>
@@ -34,19 +34,25 @@ $userList = getAllUser();
         <?php else: ?>
           <?php foreach ($userList as $i => $p): ?>
             <tr class="odd:bg-gray-900 even:bg-gray-800 border-b border-gray-700">
-              <td><?= htmlspecialchars($p['idUser']) ?></td>
-              <td><?= htmlspecialchars($p['namaLengkap']) ?></td>
-              <td><?= htmlspecialchars($p['email']) ?></td>
-              <td><?= htmlspecialchars($p['noTelp']) ?></td>
-              <td><?= htmlspecialchars($p['tipeUser']) ?></td>
-              <td>
-                <a href="editUser.php?id=<?= $p['idUser'] ?>">Edit</a>
-                <form method="POST" action="../../modules/user/userController.php"
-                  onsubmit="return confirm('Yakin ingin menghapus?');">
-                  <input type="hidden" name="idUser" value="<?= $p['idUser'] ?>">
-                  <input type="hidden" name="action" value="deleteUser">
-                  <button type="submit">Delete</button>
-                </form>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['idUser']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['namaLengkap']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['email']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['noTelp']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['tipeUser']) ?></td>
+              <td class="px-6 py-3">
+                <div class="inline-flex rounded-md shadow-xs" role="group">
+                  <a href="editUser.php?id=<?= $p['idUser'] ?>" type="button"
+                    class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
+                    Edit
+                  </a>
+                  <form method="POST" action="../../modules/user/userController.php"
+                    onsubmit="return confirm('Yakin ingin menghapus?');">
+                    <input type="hidden" name="idUser" value="<?= $p['idUser'] ?>">
+                    <input type="hidden" name="action" value="deleteUser">
+                    <button type="submit"
+                      class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
+                  </form>
+                </div>                
               </td>
             </tr>
           <?php endforeach ?>

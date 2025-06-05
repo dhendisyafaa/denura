@@ -1,5 +1,10 @@
-<?php include '../layouts/heading.php'; ?>
-<?php include '../layouts/sidebar.php'; ?>
+<?php
+include '../../modules/jasa/jasaController.php';
+$jasaList = getAllJasa();
+
+include '../layouts/heading.php';
+include '../layouts/sidebar.php';
+?>
 
 <div class="p-4 sm:ml-64 min-h-screen flex flex-col items-center justify-center">
   <?php if (isset($_GET['status'])): ?>
@@ -13,9 +18,15 @@
   <form action="../../modules/review/reviewController.php" method="POST"
     class="w-md mx-auto my-5 p-5 border border-gray-200 rounded-lg shadow-sm">
     <div class="mb-5">
-      <label for="idJasa" class="block mb-2 text-sm font-medium text-gray-900">ID Jasa</label>
-      <input type="number" id="idJasa" name="idJasa" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+      <label for="idJasa" class="block mb-2 text-sm font-medium text-gray-900">Jasa</label>
+      <select id="idJasa" name="idJasa" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        <option selected>Pilih jasa</option>
+        <?php foreach ($jasaList as $index => $jasa): ?>
+          <option value="<?= $jasa['idJasa'] ?>">
+            <?= htmlspecialchars($jasa['idJasa']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
     </div>
     <div class="mb-5">
       <label for="rating" class="block mb-2 text-sm font-medium text-gray-900">Rating</label>

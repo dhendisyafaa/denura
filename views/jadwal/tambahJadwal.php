@@ -28,7 +28,7 @@ $bookingList = getAllBooking();
       <label for="idBooking" class="block mb-2 text-sm font-medium text-gray-900">ID Booking</label>
       <select type="number" id="idBooking" name="idBooking" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                     focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-        <option selected>Pilih Booking</option>
+        <option selected disabled>Pilih Booking</option>
         <?php foreach ($bookingList as $index => $booking): ?>
           <option value="<?= $booking['idBooking'] ?>">
             <?= htmlspecialchars($booking['idBooking']) ?>
@@ -39,7 +39,7 @@ $bookingList = getAllBooking();
 
     <div class="mb-5">
       <label for="tanggal" class="block mb-2 text-sm font-medium text-gray-900">Tanggal</label>
-      <input type="text" id="tanggal" name="tanggal" maxlength="100" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+      <input type="date" id="tanggal" name="tanggal" maxlength="100" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
     </div>
 

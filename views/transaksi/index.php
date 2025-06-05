@@ -35,20 +35,26 @@ $transaksiList = getAllTransaksi();
         <?php else: ?>
           <?php foreach ($transaksiList as $i => $p): ?>
             <tr class="odd:bg-gray-900 even:bg-gray-800 border-b border-gray-700">
-              <td><?= $i + 1 ?></td>
-              <td><?= htmlspecialchars($p['idBooking']) ?></td>
-              <td><?= htmlspecialchars($p['metodePembayaran']) ?></td>
-              <td><?= htmlspecialchars($p['totalHarga']) ?></td>
-              <td><?= htmlspecialchars($p['statusPembayaran']) ?></td>
-              <td><?= htmlspecialchars($p['tglPembayaran']) ?></td>
-              <td>
-                <a href="editTransaksi.php?id=<?= $p['idTransaksi'] ?>">Edit</a>
-                <form method="POST" action="../../modules/transaksi/transaksiController.php"
-                  onsubmit="return confirm('Yakin ingin menghapus?');">
-                  <input type="hidden" name="idTransaksi" value="<?= $p['idTransaksi'] ?>">
-                  <input type="hidden" name="hapusTransaksi" value="1">
-                  <button type="submit">Delete</button>
-                </form>
+              <td class="px-6 py-4"><?= $i + 1 ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['idBooking']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['metodePembayaran']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['totalHarga']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['statusPembayaran']) ?></td>
+              <td class="px-6 py-4"><?= htmlspecialchars($p['tglPembayaran']) ?></td>
+              <td class="px-6 py-4">
+                <div class="inline-flex rounded-md shadow-xs" role="group">
+                  <a href="editTransaksi.php?id=<?= $p['idTransaksi'] ?>" type="button"
+                    class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
+                    Edit
+                  </a>
+                  <form method="POST" action="../../modules/transaksi/transaksiController.php"
+                    onsubmit="return confirm('Yakin ingin menghapus?');">
+                    <input type="hidden" name="idTransaksi" value="<?= $p['idTransaksi'] ?>">
+                    <input type="hidden" name="hapusTransaksi" value="1">
+                    <button type="submit"
+                      class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
+                  </form>
+                </div>
               </td>
             </tr>
           <?php endforeach ?>
