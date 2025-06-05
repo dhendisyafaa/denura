@@ -21,6 +21,7 @@ $portofolioList = getAllPortofolio();
           <th cope="col" class="px-6 py-3">#</th>
           <th cope="col" class="px-6 py-3">ID</th>
           <th cope="col" class="px-6 py-3">Judul</th>
+          <th cope="col" class="px-6 py-3">Link Portofolio</th>
           <th cope="col" class="px-6 py-3">Deskripsi</th>
           <th cope="col" class="px-6 py-3">Tipe</th>
           <th cope="col" class="px-6 py-3">Tanggal</th>
@@ -35,13 +36,14 @@ $portofolioList = getAllPortofolio();
         <?php else: ?>
           <?php foreach ($portofolioList as $i => $p): ?>
             <tr class="odd:bg-gray-900 even:bg-gray-800 border-b border-gray-700">
-              <td class="px-6 py-4"><?= $i + 1 ?></td>
-              <td class="px-6 py-4"><?= htmlspecialchars($p['idPortofolio']) ?></td>
-              <td class="px-6 py-4"><?= htmlspecialchars($p['judulKarya']) ?></td>
-              <td class="px-6 py-4"><?= htmlspecialchars($p['deskripsi']) ?></td>
-              <td class="px-6 py-4"><?= htmlspecialchars($p['tipeKarya']) ?></td>
-              <td class="px-6 py-4"><?= htmlspecialchars($p['tglUpload']) ?></td>
-              <td class="px-6 py-4">
+              <td class="px-6 py-3"><?= $i + 1 ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['idPortofolio']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['judulKarya']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['linkPortofolio']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['deskripsi']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['tipeKarya']) ?></td>
+              <td class="px-6 py-3"><?= htmlspecialchars($p['tglUpload']) ?></td>
+              <td class="px-6 py-3">
                 <div class="inline-flex rounded-md shadow-xs" role="group">
                   <a href="editPortofolio.php?id=<?= $p['idPortofolio'] ?>" type="button"
                     class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
@@ -54,8 +56,7 @@ $portofolioList = getAllPortofolio();
                     <button type="submit"
                       class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
                   </form>
-                </div>
-
+                </div>                
               </td>
             </tr>
           <?php endforeach ?>
