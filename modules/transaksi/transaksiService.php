@@ -21,13 +21,13 @@ function addTransaksiService($idBooking, $metodePembayaran, $totalHarga, $status
   return addTransaksiRepo($idBooking, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran);
 }
 
-function updateTransaksiService($idBooking, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran)
+function updateTransaksiService($idTransaksi, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran)
 {
-  if (empty($judulKarya) || empty($deskripsi) || empty($tipeKarya)) {
+  if (empty($idTransaksi) || empty($metodePembayaran) || empty($totalHarga) || empty($statusPembayaran)) {
     return false;
   }
 
-  return updateTransaksiRepo($idBooking, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran);
+  return updateTransaksiRepo($idTransaksi, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran);
 }
 
 function deleteTransaksiService($idTransaksi)
