@@ -36,12 +36,12 @@ function addTransaksiRepo($idBooking, $metodePembayaran, $totalHarga, $statusPem
   return mysqli_stmt_execute($stmt);
 }
 
-function updateTransaksiRepo($idBooking, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran)
+function updateTransaksiRepo($idTransaksi, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran)
 {
   global $conn;
-  $query = "UPDATE transaksi SET metodePembayaran = ?, totalHarga = ?, statusPembayaran = ?, tglPembayaran = ? WHERE idBooking = ?";
+  $query = "UPDATE transaksi SET metodePembayaran = ?, totalHarga = ?, statusPembayaran = ?, tglPembayaran = ? WHERE idTransaksi = ?";
   $stmt = mysqli_prepare($conn, $query);
-  mysqli_stmt_bind_param($stmt, "ssssi", $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran, $idBooking);
+  mysqli_stmt_bind_param($stmt, "ssssi", $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran, $idTransaksi);
   return mysqli_stmt_execute($stmt);
 }
 function deleteTransaksiRepo($idTransaksi)

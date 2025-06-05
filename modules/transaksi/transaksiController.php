@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahTransaksi'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editTransaksi'])) {
-    $idBooking = $_POST['idBooking'];
+    $idTransaksi = $_POST['idTransaksi'];
     $metodePembayaran = $_POST['metodePembayaran'];
     $totalHarga = $_POST['totalHarga'];
     $statusPembayaran = $_POST['statusPembayaran'];
-    $tglPengembalian = date('Y-m-d');
+    $tglPembayaran = date('Y-m-d');
 
-    $success = updateTransaksiService($idBooking, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran);
+    $success = updateTransaksiService($idTransaksi, $metodePembayaran, $totalHarga, $statusPembayaran, $tglPembayaran);
 
     if ($success) {
         header("Location: ../../views/transaksi/index.php");
