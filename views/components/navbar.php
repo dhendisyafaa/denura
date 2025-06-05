@@ -17,9 +17,9 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Fotografi</a>
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Videografi</a>
-      <a href="#" class="text-sm/6 font-semibold text-gray-900">Sewa alat</a>
+      <a href="./views/booking/" class="text-sm/6 font-semibold text-gray-900">Fotografi</a>
+      <a href="./views/booking/" class="text-sm/6 font-semibold text-gray-900">Videografi</a>
+      <a href="./views/penyewaan/" class="text-sm/6 font-semibold text-gray-900">Sewa alat</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
       <a href="/views/login.php" class="text-sm/6 font-semibold text-gray-900">Login<span
@@ -53,13 +53,11 @@
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
             <a href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Product</a>
+              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Fotografi</a>
             <a href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Features</a>
+              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Videografi</a>
             <a href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Marketplace</a>
-            <a href="#"
-              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
+              class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Sewa Alat</a>
           </div>
           <div class="py-6">
             <a href="/views/login.php"
