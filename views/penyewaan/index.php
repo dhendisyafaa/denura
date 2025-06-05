@@ -1,20 +1,32 @@
 <?php
 include '../../modules/penyewaan/penyewaanController.php';
+session_start();
 $penyewaanList = getAllPenyewaan();
+$tipeUser = $_SESSION['tipeUser'] ?? null;
 ?>
 
 
-<?php include '../layouts/heading.php' ?>
-<?php include '../layouts/sidebar.php'; ?>
+<?php 
+include '../layouts/heading.php';
+if ($tipeUser == 'Admin'):
+    include '../layouts/sidebar.php';
+endif;
 
-<div class="p-4 sm:ml-64">
+$class = ($tipeUser == 'Admin') 
+    ? 'p-4 sm:ml-64' 
+    : 'mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8';
+?>
+
+<div class="<?= $class ?>">
     <h1 class="text-2xl text-bold my-3">Daftar Penyewaan Peralatan</h1>
-    <a href="tambahPenyewaan.php">
-        <button type="button"
-            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-            Tambah Penyewaan
-        </button>
-    </a>
+    <?php if ($tipeUser === 'Admin'): ?>
+        <a href="tambahPenyewaan.php">
+            <button type="button"
+                class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                Tambah Penyewaan
+            </button>
+        </a>
+    <?php endif; ?>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-400">

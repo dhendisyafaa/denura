@@ -1,86 +1,65 @@
 <?php
 include '../../modules/barang/barangController.php';
+session_start();
 $barangList = getAllBarang();
+$tipeUser = $_SESSION['tipeUser'] ?? null;
 ?>
 
-<?php include '../layouts/heading.php' ?>
-<?php include '../layouts/sidebar.php'; ?>
+<?php 
+include '../layouts/heading.php';
+if ($tipeUser == 'Admin'):
+    include '../layouts/sidebar.php';
+endif;
 
-<div class="p-4 sm:ml-64">
-    <h1 class="text-2xl text-bold my-3">Daftar Barang</h1>
-    <a href="tambahBarang.php">
-        <button type="button"
-            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Tambah
-            Barang</button>
-    </a>
+$class = ($tipeUser == 'Admin') 
+    ? 'p-4 sm:ml-64' 
+    : 'mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8';
+?>
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-400">
-            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        #
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        ID
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Nama Barang
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Harga Barang
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Stok
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (empty($barangList)): ?>
-                    <tr class="px-6 py-4">
-                        <td colspan="5">Tidak ada data barang.</td>
-                    </tr>
-                <?php else: ?>
-                    <?php foreach ($barangList as $index => $barang): ?>
-                        <tr class="odd:bg-gray-900 even:bg-gray-800 border-b border-gray-700">
-                            <td class="px-6 py-4">
-                                <?= $index + 1 ?>
-                            </td>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <?= htmlspecialchars($barang['idBarang']) ?>
-                            </th>
-                            <td class="px-6 py-4">
-                                <?= htmlspecialchars($barang['namaBarang']) ?>
-                            </td>
-                            <td class="px-6 py-4">
-                                <?= htmlspecialchars($barang['hargaBarang']) ?>
-                            </td>
-                            <td class="px-6 py-4">
-                                <?= htmlspecialchars($barang['stok']) ?>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="inline-flex rounded-md shadow-xs" role="group">
-                                    <a href="editBarang.php?id=<?= $barang['idBarang'] ?>" type="button"
-                                        class="px-4 py-2 text-sm font-medium text-orange-500 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">
-                                        Edit
-                                    </a>
-                                    <form method="POST" action="../../modules/barang/barangController.php"
-                                        onsubmit="return confirm('Yakin ingin menghapus barang ini?');">
-                                        <input type="hidden" name="idBarang" value="<?= $barang['idBarang'] ?>">
-                                        <input type="hidden" name="hapusBarang" value="1">
-                                        <button type="submit"
-                                            class="px-4 py-2 text-sm font-medium text-red-500 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:ring-2 focus:ring-gray-700">Delete</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+<div class="<?= $class ?>">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Daftar Barang</h2>
+        <?php if ($tipeUser === 'Admin'): ?>
+            <a href="tambahBarang.php">
+                <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    + Tambah Barang
+                </button>
+            </a>
+        <?php endif; ?>
+    </div>
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <?php foreach ($barangList as $barang): ?>
+            <div class="group">
+                <img src="<?= htmlspecialchars($barang['urlGambar']) ?>"
+                    alt="<?= htmlspecialchars($barang['namaBarang']) ?>"
+                    class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+
+                <h3 class="mt-4 text-sm text-gray-700"><?= htmlspecialchars($barang['namaBarang']) ?></h3>
+                <p class="mt-1 text-lg font-medium text-gray-900">
+                    Rp<?= number_format($barang['hargaBarang']) ?>
+                </p>
+                <p class="text-sm text-gray-500">Stok: <?= htmlspecialchars($barang['stok']) ?></p>
+
+                <?php if ($tipeUser === 'Admin'): ?>
+                    <div class="flex gap-2 mt-2">
+                        <a href="editBarang.php?id=<?= $barang['idBarang'] ?>"
+                            class="flex-1 text-center text-sm bg-yellow-500 text-white py-1 rounded hover:bg-yellow-600">
+                            Edit
+                        </a>
+                        <form method="POST" action="../../modules/barang/barangController.php" class="flex-1"
+                            onsubmit="return confirm('Yakin ingin menghapus barang ini?');">
+                            <input type="hidden" name="idBarang" value="<?= $barang['idBarang'] ?>">
+                            <input type="hidden" name="hapusBarang" value="1">
+                            <button type="submit"
+                                class="w-full text-sm bg-red-500 text-white py-1 rounded hover:bg-red-600">
+                                Hapus
+                            </button>
+                        </form>
+                    </div>
                 <?php endif; ?>
-            </tbody>
-        </table>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 

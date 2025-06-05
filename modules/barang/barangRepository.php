@@ -38,32 +38,32 @@ function getBarangByIdRepo($id)
   return $barang ?: null;
 }
 
-function insertBarangRepo($nama_barang, $harga, $stok)
+function insertBarangRepo($nama_barang, $harga, $stok, $urlGambar = null)
 {
   global $conn;
-  $query = "INSERT INTO barang (namaBarang, hargaBarang, stok) VALUES (?, ?, ?)";
+  $query = "INSERT INTO barang (namaBarang, hargaBarang, stok, urlGambar) VALUES (?, ?, ?, ?)";
   $stmt = mysqli_prepare($conn, $query);
 
   if (!$stmt) {
     die("Prepare failed: " . mysqli_error($conn));
   }
 
-  mysqli_stmt_bind_param($stmt, "sii", $nama_barang, $harga, $stok);
+  mysqli_stmt_bind_param($stmt, "siis", $nama_barang, $harga, $stok, $urlGambar);
   $success = mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
 
   return $success;
 }
 
-function updateBarangRepo($idBarang, $namaBarang, $stok, $harga)
+function updateBarangRepo($idBarang, $namaBarang, $stok, $harga, $urlGambar = null)
 {
   global $conn;
-  $query = "UPDATE barang SET namaBarang = ?, stok = ?, hargaBarang = ? WHERE idBarang = ?";
+  $query = "UPDATE barang SET namaBarang = ?, stok = ?, hargaBarang = ?, urlGambar = ? WHERE idBarang = ?";
   $stmt = mysqli_prepare($conn, $query);
   if (!$stmt)
     return false;
 
-  mysqli_stmt_bind_param($stmt, "siii", $namaBarang, $stok, $harga, $idBarang);
+  mysqli_stmt_bind_param($stmt, "siisi", $namaBarang, $stok, $harga, $urlGambar, $idBarang);
   $success = mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
 
