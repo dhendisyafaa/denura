@@ -1,6 +1,10 @@
 <?php
 include_once __DIR__ . "/userRepository.php";
 
+function getUserByIdService($idUser)
+{
+  return getUserByIdRepo($idUser);
+}
 function registerUserService($data)
 {
   if (isEmailExist($data['email'])) {
@@ -16,4 +20,14 @@ function registerUserService($data)
 function getAllUserService()
 {
   return getAllUserRepo();
+}
+
+function updateUserService($data)
+{
+  return updateUserRepo($data);
+}
+
+function deleteUserService($idUser)
+{
+  return deleteUserRepo($idUser);
 }
