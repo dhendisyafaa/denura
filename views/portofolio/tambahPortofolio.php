@@ -37,6 +37,12 @@ include '../layouts/sidebar.php'; ?>
         placeholder="" required />
     </div>
     <div class="mb-5">
+      <label for="linkPortofolio" class="block mb-2 text-sm font-medium text-gray-900">Link Portofolio</label>
+      <input type="text" id="linkPortofolio" name="linkPortofolio"
+        class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+        placeholder="" required />
+    </div>
+    <div class="mb-5">
       <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
       <input type="text" id="deskripsi" name="deskripsi"
         class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "

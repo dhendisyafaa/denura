@@ -27,21 +27,21 @@ function getPortofolioByIdRepo($id)
   return mysqli_fetch_assoc($result);
 }
 
-function addPortofolioRepo($idUser, $judulKarya, $deskripsi, $tipeKarya, $tglUpload)
+function addPortofolioRepo($idUser, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya, $tglUpload)
 {
   global $conn;
-  $query = "INSERT INTO portofolio (idUser, judulKarya, deskripsi, tipeKarya, tglUpload) VALUES (?, ?, ?, ?, ?)";
+  $query = "INSERT INTO portofolio (idUser, judulKarya, linkPortofolio, deskripsi, tipeKarya, tglUpload) VALUES (?, ?, ?, ?, ?, ?)";
   $stmt = mysqli_prepare($conn, $query);
-  mysqli_stmt_bind_param($stmt, "issss", $idUser, $judulKarya, $deskripsi, $tipeKarya, $tglUpload);
+  mysqli_stmt_bind_param($stmt, "isssss", $idUser, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya, $tglUpload);
   return mysqli_stmt_execute($stmt);
 }
 
-function updatePortofolioRepo($idPortofolio, $judulKarya, $deskripsi, $tipeKarya)
+function updatePortofolioRepo($idPortofolio, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya)
 {
   global $conn;
-  $query = "UPDATE portofolio SET judulKarya = ?, deskripsi = ?, tipeKarya = ? WHERE idPortofolio = ?";
+  $query = "UPDATE portofolio SET judulKarya = ?, linkPortofolio = ?, deskripsi = ?, tipeKarya = ? WHERE idPortofolio = ?";
   $stmt = mysqli_prepare($conn, $query);
-  mysqli_stmt_bind_param($stmt, "sssi", $judulKarya, $deskripsi, $tipeKarya, $idPortofolio);
+  mysqli_stmt_bind_param($stmt, "ssssi", $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya, $idPortofolio);
   return mysqli_stmt_execute($stmt);
 }
 

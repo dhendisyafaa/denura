@@ -21,6 +21,7 @@ $portofolioList = getAllPortofolio();
           <th cope="col" class="px-6 py-3">#</th>
           <th cope="col" class="px-6 py-3">ID</th>
           <th cope="col" class="px-6 py-3">Judul</th>
+          <th cope="col" class="px-6 py-3">Link Portofolio</th>
           <th cope="col" class="px-6 py-3">Deskripsi</th>
           <th cope="col" class="px-6 py-3">Tipe</th>
           <th cope="col" class="px-6 py-3">Tanggal</th>
@@ -38,6 +39,7 @@ $portofolioList = getAllPortofolio();
               <td><?= $i + 1 ?></td>
               <td><?= htmlspecialchars($p['idPortofolio']) ?></td>
               <td><?= htmlspecialchars($p['judulKarya']) ?></td>
+              <td><?= htmlspecialchars($p['linkPortofolio']) ?></td>
               <td><?= htmlspecialchars($p['deskripsi']) ?></td>
               <td><?= htmlspecialchars($p['tipeKarya']) ?></td>
               <td><?= htmlspecialchars($p['tglUpload']) ?></td>

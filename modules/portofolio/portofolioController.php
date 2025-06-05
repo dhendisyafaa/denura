@@ -15,11 +15,12 @@ function getPortofolioById($id)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahPortofolio'])) {
     $idUser = $_POST['idUser'];
     $judulKarya = $_POST['judulKarya'];
+    $linkPortofolio = $_POST['linkPortofolio'];
     $deskripsi = $_POST['deskripsi'];
     $tipeKarya = $_POST['tipeKarya'];
     $tglUpload = date('Y-m-d'); // Tanggal hari ini
 
-    $success = addPortofolioService($idUser, $judulKarya, $deskripsi, $tipeKarya, $tglUpload);
+    $success = addPortofolioService($idUser, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya, $tglUpload);
 
     if ($success) {
         header("Location: ../../views/portofolio/index.php");
@@ -32,10 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahPortofolio'])) 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editPortofolio'])) {
     $idPortofolio = $_POST['idPortofolio'];
     $judulKarya = $_POST['judulKarya'];
+    $linkPortofolio = $_POST['linkPortofolio'];
     $deskripsi = $_POST['deskripsi'];
     $tipeKarya = $_POST['tipeKarya'];
 
-    $success = updatePortofolioService($idPortofolio, $judulKarya, $deskripsi, $tipeKarya);
+    $success = updatePortofolioService($idPortofolio, $judulKarya, $linkPortofolio, $deskripsi, $tipeKarya);
 
     if ($success) {
         header("Location: ../../views/portofolio/index.php");

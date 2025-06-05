@@ -30,21 +30,24 @@ include '../layouts/sidebar.php';
   <form action="../../modules/portofolio/portofolioController.php" method="POST"
     class="w-md mx-auto my-5 p-5 border border-gray-200 rounded-lg shadow-sm">
     <input type="hidden" name="idPortofolio" value="<?= $portofolio['idPortofolio'] ?>">
-
     <div class="mb-5">
       <label for="judulKarya" class="block mb-2 text-sm font-medium text-gray-900">Judul Karya</label>
       <input type="text" id="judulKarya" name="judulKarya" value="<?= htmlspecialchars($portofolio['judulKarya']) ?>"
         class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
     </div>
-
+    <div class="mb-5">
+      <label for="linkPortofolio" class="block mb-2 text-sm font-medium text-gray-900">Link Portofolio</label>
+      <input type="text" id="linkPortofolio" name="linkPortofolio"
+        value="<?= htmlspecialchars($portofolio['linkPortofolio']) ?>" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+    </div>
     <div class="mb-5">
       <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
       <textarea id="deskripsi" name="deskripsi" rows="4" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         required><?= htmlspecialchars($portofolio['deskripsi']) ?></textarea>
     </div>
-
     <div class="mb-5">
       <label for="tipeKarya" class="block mb-2 text-sm font-medium text-gray-900">Tipe Karya</label>
       <select id="tipeKarya" name="tipeKarya" class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
