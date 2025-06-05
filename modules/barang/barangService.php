@@ -14,20 +14,21 @@ function getBarangByIdService($id)
   return getBarangByIdRepo($id);
 }
 
-function createBarangService($nama_barang, $harga, $stok)
+function createBarangService($nama_barang, $harga, $stok, $urlGambar)
 {
   if (empty($nama_barang) || $harga <= 0 || $stok < 0) {
     return false;
   }
 
-  return insertBarangRepo($nama_barang, $harga, $stok);
+  return insertBarangRepo($nama_barang, $harga, $stok, $urlGambar);
 }
 
-function updateBarangService($idBarang, $namaBarang, $stok, $harga)
+function updateBarangService($idBarang, $namaBarang, $stok, $harga, $urlGambar)
 {
   if (empty($namaBarang) || $harga <= 0 || $stok < 0 || $idBarang <= 0)
     return false;
-  return updateBarangRepo($idBarang, $namaBarang, $stok, $harga);
+
+  return updateBarangRepo($idBarang, $namaBarang, $stok, $harga, $urlGambar);
 }
 
 function deleteBarangService($idBarang)

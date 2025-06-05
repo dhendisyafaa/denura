@@ -1,4 +1,6 @@
 <?php
+include_once __DIR__ . '/../../middleware/helpers.php';
+requireAdminOnly();
 include '../../modules/barang/barangController.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -47,6 +49,13 @@ include '../layouts/sidebar.php';
         <div class="mb-5">
             <label for="stok" class="block mb-2 text-sm font-medium text-gray-900">Stok</label>
             <input placeholder="10" type="number" id="stok" name="stok" value="<?= htmlspecialchars($barang['stok']) ?>"
+                class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                required />
+        </div>
+        <div class="mb-5">
+            <label for="url" class="block mb-2 text-sm font-medium text-gray-900">Url Gambar Barang</label>
+            <input type="text" id="url" name="urlGambar"
+                value="<?= htmlspecialchars($barang['urlGambar']) ?>"
                 class="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required />
         </div>
